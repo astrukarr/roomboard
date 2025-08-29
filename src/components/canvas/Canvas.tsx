@@ -10,6 +10,7 @@ import Moveable, {
 } from 'react-moveable';
 import { useEffect, useMemo, useRef } from 'react';
 import { useBoard } from '@/store/board';
+import DeleteButton from '../buttons/DeleteButton';
 
 export default function Canvas() {
   const canvasRef = useRef<HTMLDivElement | null>(null);
@@ -151,18 +152,11 @@ export default function Canvas() {
           snappable={false}
         />
       )}
-
-      {/* tiny toolbar for the selected item */}
       {selected && (
         <div className="pointer-events-auto absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-2 rounded-md border bg-white/90 px-2 py-1 text-xs shadow">
           <span className="font-medium">{selected.title}</span>
           <span className="opacity-60">€{selected.price}</span>
-          <button
-            onClick={() => remove(selected.id)}
-            className="rounded border px-2 py-0.5 hover:bg-neutral-50 cursor-pointer"
-          >
-            Delete
-          </button>
+          <DeleteButton onClick={() => remove(selected.id)} />
         </div>
       )}
     </div>

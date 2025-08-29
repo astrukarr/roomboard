@@ -1,6 +1,7 @@
 'use client';
 import { catalog } from '@/data/catalog';
 import { useBoard } from '@/store/board';
+import AddButton from '../buttons/AddButton';
 
 export default function Catalog() {
   const add = useBoard((s) => s.addFromCatalog);
@@ -18,12 +19,7 @@ export default function Catalog() {
               </div>
             </div>
           </div>
-          <button
-            onClick={() => add(it)}
-            className="rounded-md border px-2 py-1 text-xs hover:bg-neutral-50 cursor-pointer"
-          >
-            Add
-          </button>
+          <AddButton onClick={() => add(it)} />
         </li>
       ))}
     </ul>
