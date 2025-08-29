@@ -1,5 +1,6 @@
 import Canvas from '@/components/canvas/Canvas';
 import Catalog from '@/components/catalog/Catalog';
+import EditorToolbar from '@/components/editorToolbar/EditorToolbar';
 
 export default function Page() {
   return (
@@ -9,6 +10,7 @@ export default function Page() {
         <Catalog />
       </aside>
       <section className="col-span-8 lg:col-span-9">
+        <EditorToolbar />
         <Canvas />
       </section>
     </main>

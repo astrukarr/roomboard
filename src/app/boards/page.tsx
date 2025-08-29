@@ -1,13 +1,31 @@
+'use client';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { listBoards, type BoardIndexItem } from '@/lib/storage';
 
 export default function Page() {
+  const [boards, setBoards] = useState<BoardIndexItem[]>([]);
+  useEffect(() => setBoards(listBoards()), []);
   return (
-    <main className="p-8 space-y-3">
+    <main className="mx-auto max-w-3xl p-6">
       <h1 className="text-xl font-semibold">My Boards</h1>
-      <p className="text-sm opacity-70">Nothing here yet.</p>
-      <Link href="/boards/new" className="inline-block rounded-lg border px-4 py-2">
-        Create new
-      </Link>
+      <ul className="mt-4 divide-y">
+        {boards.length === 0 && <li className="py-6 text-sm opacity-60">No boards yet.</li>}
+        {boards.map((b) => (
+          <li key={b.id} className="py-3 flex items-center justify-between">
+            <div>
+              <div className="text-sm font-medium">{b.name}</div>
+              <div className="text-xs opacity-60">{new Date(b.updatedAt).toLocaleString()}</div>
+            </div>
+            <Link
+              href={`/boards/${b.id}`}
+              className="rounded border px-3 py-1 text-sm hover:bg-neutral-50"
+            >
+              Open
+            </Link>
+          </li>
+        ))}
+      </ul>
     </main>
   );
 }

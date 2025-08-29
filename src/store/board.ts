@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import { saveBoardSnapshot, loadBoardSnapshot } from '@/lib/storage';
 
 export type BoardItem = {
   id: string;
@@ -28,6 +29,8 @@ type State = {
   remove: (id: string) => void;
   select: (id: string | null) => void;
   load: () => void;
+  saveAsNew: (name?: string) => string;
+  loadById: (id: string) => boolean;
 };
 
 const P2C = 3;
@@ -72,6 +75,19 @@ export const useBoard = create<State>((set, get) => ({
     if (typeof window === 'undefined') return;
     const raw = localStorage.getItem('rb_board_tmp');
     if (raw) set({ items: JSON.parse(raw) });
+  },
+  saveAsNew: (name = 'Untitled') => {
+    const { items } = get();
+    const id = crypto.randomUUID();
+    saveBoardSnapshot({ id, name, updatedAt: new Date().toISOString(), items });
+    return id;
+  },
+
+  loadById: (id) => {
+    const snap = loadBoardSnapshot(id);
+    if (!snap) return false;
+    set({ items: snap.items, selectedId: null });
+    return true;
   },
 }));
 
