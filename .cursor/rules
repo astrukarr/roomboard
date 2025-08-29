@@ -1,0 +1,178 @@
+# RoomBoard Coding Rules & Standards
+
+## Project Overview
+
+RoomBoard is a Next.js 15 + React 19 application for creating room moodboards and layouts. It uses TypeScript, Tailwind CSS, Zustand for state management, and react-moveable for canvas interactions.
+
+## Technology Stack
+
+- **Framework**: Next.js 15 with App Router
+- **Language**: TypeScript 5+
+- **State Management**: Zustand
+- **Styling**: Tailwind CSS v4
+- **Package Manager**: pnpm
+- **UI Components**: react-moveable for canvas interactions
+
+## Code Style & Conventions
+
+### TypeScript
+
+- **ALWAYS separate types into dedicated type files** - never define types inside components
+- Use strict TypeScript with proper typing
+- Prefer interfaces over types for object shapes
+- Use `type` for unions, intersections, and utility types
+- Always define return types for functions
+- Use generic types when appropriate
+- Create a centralized `types/` directory for all type definitions
+- Import types from dedicated files, never inline them
+- Use descriptive type names that clearly indicate their purpose
+- Group related types in the same file (e.g., `board.types.ts`, `catalog.types.ts`)
+
+### React Patterns
+
+- Use functional components with hooks
+- Mark client components with `'use client'` directive
+- Prefer `useMemo` and `useCallback` for expensive operations
+- Use proper dependency arrays in useEffect
+- Implement proper cleanup in useEffect
+
+### File & Component Structure
+
+- Use PascalCase for component files and folders
+- Use camelCase for utility files and functions
+- Group related components in feature folders
+- Keep components focused and single-responsibility
+- Export components as default exports
+
+### State Management
+
+- Use Zustand for global state
+- Keep state logic in store files
+- Use selectors for accessing specific state slices
+- Implement proper state updates with immutable patterns
+- Handle loading and error states explicitly
+
+### Styling
+
+- Use Tailwind CSS utility classes
+- Prefer semantic class names over arbitrary values
+- Use CSS variables for custom properties
+- Implement responsive design with Tailwind breakpoints
+- Keep component styles co-located
+
+### Performance
+
+- Implement proper memoization strategies
+- Use React.memo for expensive components
+- Optimize re-renders with proper dependency management
+- Lazy load components when appropriate
+- Implement proper cleanup for event listeners
+
+## Specific Patterns for This Project
+
+### Canvas Interactions
+
+- Use refs for DOM manipulation
+- Implement proper event handling for moveable elements
+- Handle keyboard shortcuts consistently
+- Provide visual feedback for user interactions
+- Implement proper cleanup for canvas operations
+
+### Data Persistence
+
+- Use localStorage for temporary saves
+- Implement proper error handling for storage operations
+- Version data structures for future compatibility
+- Handle storage quota limits gracefully
+
+### Component Architecture
+
+- Separate presentation from logic
+- Use composition over inheritance
+- **Import prop interfaces from type files, never define them inline**
+- Handle edge cases and error states
+- Provide meaningful default values
+
+### Type Organization
+
+- **Create a dedicated `types/` directory at the root level**
+- Organize types by feature/domain (e.g., `board.ts`, `canvas.ts`, `ui.ts`)
+- Export all types from a central `types/index.ts` file
+- Use barrel exports for clean imports
+- Never define types, interfaces, or enums inside component files
+- Always import types from their dedicated files
+- Use descriptive naming: `BoardItem` not `Item`, `CatalogProduct` not `Product`
+- Include JSDoc comments for complex types
+
+## Code Quality Standards
+
+### Naming Conventions
+
+- Use descriptive variable and function names
+- Avoid abbreviations unless widely understood
+- Use consistent naming patterns across the codebase
+- Prefix boolean variables with "is", "has", "can", etc.
+
+### Error Handling
+
+- Implement proper error boundaries
+- Provide user-friendly error messages
+- Log errors appropriately for debugging
+- Handle edge cases gracefully
+- Validate input data
+
+### Testing Considerations
+
+- Write testable code
+- Separate business logic from UI components
+- Use proper dependency injection patterns
+- Implement proper mocking strategies
+- Test edge cases and error conditions
+
+### Documentation
+
+- Use JSDoc for complex functions
+- Document component props and interfaces
+- Provide examples for complex usage
+- Keep README and documentation up to date
+- Document architectural decisions
+
+## Git & Collaboration
+
+- Use conventional commit messages
+- Keep commits focused and atomic
+- Review code before merging
+- Use feature branches for new development
+- Maintain clean git history
+
+## Performance Guidelines
+
+- Optimize bundle size
+- Implement proper code splitting
+- Use dynamic imports when appropriate
+- Optimize images and assets
+- Monitor Core Web Vitals
+
+## Accessibility
+
+- Implement proper ARIA labels
+- Ensure keyboard navigation works
+- Provide alternative text for images
+- Test with screen readers
+- Follow WCAG guidelines
+
+## Security
+
+- Validate all user inputs
+- Sanitize data before storage
+- Implement proper CORS policies
+- Use HTTPS in production
+- Follow security best practices
+
+## Deployment & DevOps
+
+- Use environment variables for configuration
+- Implement proper build processes
+- Use CI/CD pipelines
+- Monitor application performance
+- Implement proper logging and monitoring

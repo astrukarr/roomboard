@@ -1,31 +1,16 @@
 import { create } from 'zustand';
 import { saveBoardSnapshot, loadBoardSnapshot } from '@/lib/storage';
-
-export type BoardItem = {
-  id: string;
-  productId: string;
-  x: number;
-  y: number;
-  w: number;
-  h: number;
-  rotation: number;
-  color: string;
-  title: string;
-  price: number;
-};
+import type {
+  BoardItem,
+  AddFromCatalogParams,
+  BoardItemUpdate,
+} from '@/types';
 
 type State = {
   items: BoardItem[];
   selectedId: string | null;
-  addFromCatalog: (c: {
-    id: string;
-    title: string;
-    color: string;
-    widthCm: number;
-    depthCm: number;
-    price: number;
-  }) => void;
-  update: (id: string, patch: Partial<BoardItem>) => void;
+  addFromCatalog: (c: AddFromCatalogParams) => void;
+  update: (id: string, patch: BoardItemUpdate) => void;
   remove: (id: string) => void;
   select: (id: string | null) => void;
   load: () => void;

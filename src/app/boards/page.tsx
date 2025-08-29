@@ -1,7 +1,8 @@
 'use client';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { listBoards, type BoardIndexItem } from '@/lib/storage';
+import { listBoards } from '@/lib/storage';
+import type { BoardIndexItem } from '@/types';
 
 export default function Page() {
   const [boards, setBoards] = useState<BoardIndexItem[]>([]);

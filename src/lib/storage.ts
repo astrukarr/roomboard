@@ -1,7 +1,4 @@
-import type { BoardItem } from '@/store/board';
-
-export type BoardIndexItem = { id: string; name: string; updatedAt: string };
-export type BoardSnapshot = { id: string; name: string; updatedAt: string; items: BoardItem[] };
+import type { BoardIndexItem, BoardSnapshot } from '@/types';
 
 const INDEX_KEY = 'rb_boards';
 const KEY = (id: string) => `rb_board:${id}`;

@@ -1,11 +1,4 @@
-export type CatalogItem = {
-  id: string;
-  title: string;
-  color: string;
-  widthCm: number;
-  depthCm: number;
-  price: number;
-};
+import type { CatalogItem } from '@/types';
 
 export const catalog: CatalogItem[] = [
   {
