@@ -3,36 +3,38 @@ import Link from 'next/link';
 
 export default function Footer() {
   return (
-    <footer className="mt-auto bg-neutral-100 text-neutral-700">
-      <div className="mx-auto max-w-5xl px-6">
-        {/* linkovi u jednom redu, centrirani */}
-        <nav className="flex h-16 items-center justify-center gap-6 flex-nowrap text-sm">
-          <Link href="/about" className="hover:underline">
-            About us
-          </Link>
-          <Link href="/contact" className="hover:underline">
-            Contact
-          </Link>
-          <Link
-            href="https://github.com/astrukarr/roomboard"
-            target="_blank"
-            rel="noreferrer"
-            className="hover:underline"
-          >
-            GitHub
-          </Link>
-          <Link
-            href="https://linkedin.com/in/andjela-strukar"
-            target="_blank"
-            rel="noreferrer"
-            className="hover:underline"
-          >
-            LinkedIn
-          </Link>
-        </nav>
-
-        <div className="h-10 flex items-center justify-center text-xs text-neutral-500">
-          © {new Date().getFullYear()} RoomBoard
+    <footer className="mt-auto bg-gray-50 border-t border-gray-200">
+      <div className="mx-auto px-6 py-8 space-y-6">
+        <div className="flex  items-center justify-center space-y-4 md:space-y-0">
+          <div className="flex items-center space-x-8 text-sm">
+            <Link
+              href="/about"
+              className="text-gray-600 hover:text-gray-900 transition-colors duration-200 hover:underline"
+            >
+              About us
+            </Link>
+            <Link
+              href="/contact"
+              className="text-gray-600 hover:text-gray-900 transition-colors duration-200 hover:underline"
+            >
+              Contact
+            </Link>
+            <Link
+              href="/faq"
+              className="text-gray-600 hover:text-gray-900 transition-colors duration-200 hover:underline"
+            >
+              FAQ
+            </Link>
+            <Link
+              href="/privacy-policy"
+              className="text-gray-600 hover:text-gray-900 transition-colors duration-200 hover:underline"
+            >
+              Privacy Policy
+            </Link>
+          </div>
+        </div>
+        <div className="flex text-xs text-gray-500 justify-center">
+          Copyright © {new Date().getFullYear()} RoomBoard.
         </div>
       </div>
     </footer>

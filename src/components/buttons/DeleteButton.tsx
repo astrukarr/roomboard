@@ -9,12 +9,12 @@ export default function DeleteButton({ children = 'Delete', className = '', ...r
     <button
       type="button"
       className={[
-        'rounded border px-2 py-0.5 text-xs hover:bg-neutral-50 cursor-pointer',
+        'bg-neutral-600 text-white px-3 py-2 rounded-lg hover:bg-neutral-700 transition-all duration-200  shadow-md hover:shadow-lg flex items-center space-x-2 font-medium cursor-pointer',
         className,
       ].join(' ')}
       {...rest}
     >
-      {children}
+      <span>{children}</span>
     </button>
   );
 }
